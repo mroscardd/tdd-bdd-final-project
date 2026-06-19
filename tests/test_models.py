@@ -165,6 +165,16 @@ class TestProductModel(unittest.TestCase):
         for item in lista_db:
             self.assertEqual(item.name, first_name)
 
+    def test_available(self):
+        """available product"""
+        for _ in range(10):
+            product = ProductFactory()
+            product.create()
+        first_available = product.all()[0].available
+        numero_clase = len[p for p in product.all() if p.available == True]  
+        numero_db = product.find_by_availability() 
+        self.assertEqual(numero_clase, numero_db)
+
             
 
 
