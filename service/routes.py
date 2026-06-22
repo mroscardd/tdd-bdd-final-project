@@ -58,7 +58,8 @@ def check_content_type(content_type):
     if request.headers["Content-Type"] == content_type:
         return
 
-    app.logger.error("Invalid Content-Type: %s", request.headers["Content-Type"])
+    app.logger.error("Invalid Content-Type: %s",
+                     request.headers["Content-Type"])
     abort(
         status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
         f"Content-Type must be {content_type}",
@@ -147,6 +148,7 @@ def get_products(product_id):
 # U P D A T E   A   P R O D U C T
 ######################################################################
 
+
 @app.route("/products/<int:product_id>", methods=["PUT"])
 def update_products(product_id):
     """ Update products """
@@ -171,4 +173,3 @@ def delete_products(product_id):
     if product:
         product.delete()
     return "", status.HTTP_204_NO_CONTENT
-
